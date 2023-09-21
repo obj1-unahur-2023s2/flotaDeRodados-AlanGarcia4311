@@ -1,5 +1,5 @@
 class Corsa { 
-	const color
+	var property color
 
 	method capacidad() = 4
 	method velocidadMaxima() = 150
@@ -17,44 +17,38 @@ class Renault {
 }
 
 object trafic {
-	var interior
-	var motor
+	var property interior
+	var property motor
 	
-	method capacidad() = interior.capacidad()
+	method capacidad() = interior.capacidadInterior()
 	method velocidadMaxima() = motor.velocidadMaxima()
-	method peso() = 4000 + interior.peso() + motor.peso()
+	method peso() = 4000 + interior.peso() + motor.pesoMotor()
 	method color() = "blanco"
 }
 
 object comodo {
-	method capacidad() = 5
+	method capacidadInterior() = 5
 	method peso() = 700	
 }
 
 object popular {
-	method capacidad() = 12
+	method capacidadInterior() = 12
 	method peso() = 1000
 }
 
 object pulenta {
 	method velocidadMaxima() = 130
-	method peso() = 800
+	method pesoMotor() = 800
 }
 
 object bataton {
 	method velocidadMaxima() = 80
-	method peso() = 500
+	method pesoMotor() = 500
 } 
 
 class AutosEspeciales {
-	var capacidad
-	var velocidadMaxima
-	var peso
-	var color
-}
-
-class Dependencia {
-	const rodados = []
-	
-	
+	var property capacidad
+	var property velocidadMaxima
+	var property peso
+	var property color
 }
