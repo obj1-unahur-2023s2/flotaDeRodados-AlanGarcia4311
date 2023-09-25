@@ -1,13 +1,16 @@
+import wollok.game.*
+
 class Corsa { 
 	var property color
 
 	method capacidad() = 4
 	method velocidadMaxima() = 150
 	method peso() = 1300
-	method color() = color
+	
+	method position() = game.at(0,0)
 }
 
-class Renault {
+class Kwid {
 	const tieneTanqueAdicional
 	
 	method capacidad() = if (tieneTanqueAdicional) 3 else 4

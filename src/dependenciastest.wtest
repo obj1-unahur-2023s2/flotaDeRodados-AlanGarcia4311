@@ -1,0 +1,64 @@
+import dependencias.*
+import rodados.*
+import pedidos.*
+
+describe "Test de dependencias 1" {
+	const deportes = new Dependencia(cantidadDeEmpleados = 45)
+	const cultura = new Dependencia(cantidadDeEmpleados = 31)
+
+	method initialize(){
+		var cachito = new Corsa(color = "rojo")
+		
+		deportes.agregarAFlota(cachito)
+		deportes.agregarAFlota(new Corsa(color = "azul"))
+		deportes.agregarAFlota(new Corsa(color = "verde"))
+		deportes.agregarAFlota(new Kwid(tieneTanqueAdicional = true))
+		deportes.agregarAFlota(new AutosEspeciales(capacidad=5,velocidadMaxima=160,peso=1200,color="beige"))
+		cultura.agregarAFlota(cachito)
+		cultura.agregarAFlota(new Kwid(tieneTanqueAdicional = true))
+		cultura.agregarAFlota(new Kwid(tieneTanqueAdicional = true))
+		cultura.agregarAFlota(new Kwid(tieneTanqueAdicional = false))
+		trafic.interior(popular)
+		trafic.motor(bataton)
+		cultura.agregarAFlota(trafic)
+	}
+	
+	test "peso total de la flota de deportes es 6450"{
+		assert.equals(6450,deportes.pesoTotalFlota())
+	}
+	test "peso total de la flota de cultura es 10700"{
+		assert.equals(10700	,cultura.pesoTotalFlota())
+	}
+	
+	test "estan bien equipadas de la flota de deportes"{
+		assert.that(deportes.estaBienEquipada())
+	}
+	test "no estan bien equipadas la flota de cultura"{
+		assert.notThat(cultura.estaBienEquipada())
+	}
+	test "capacidad total en color azul en deportes"{
+		assert.equals(7,deportes.capacidadTotalEnColor("azul"))
+	}
+	test "capacidad total en color azul en cultura"{
+		assert.equals(10,cultura.capacidadTotalEnColor("azul"))
+	}
+	test "color del rodado más rápido en la flota de deportes es beige"{
+		assert.equals("beige",deportes.colorDelRodadoMasRapido())
+	}
+	test "color del rodado más rápido en la flota de cultura es rojo"{
+		assert.equals("rojo",cultura.colorDelRodadoMasRapido())
+	}
+	test "la flota de deportes es grande"{
+		assert.that(deportes.esGrande())
+	}
+	test "la flota de cultura es grande"{
+		assert.notThat(cultura.esGrande())
+	}
+	test "capacidad faltante de la flota deportes"{
+		assert.equals(25,deportes.capacidadFaltante())
+	}
+	test "capacidad faltante de la flota cultura"{
+		assert.equals(5,cultura.capacidadFaltante())
+	}
+}
+
